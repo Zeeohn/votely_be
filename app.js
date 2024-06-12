@@ -20,12 +20,15 @@ const userRoute = require("./userRoute");
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "http://localhost:5173", methods: ["GET", "POST", "PATCH"] },
+  cors: {
+    origin: ["http://localhost:5173", "https://votely-iota.vercel.app"],
+    methods: ["GET", "POST", "PATCH"],
+  },
 });
 
 app.use(
   cors({
-    origin: ["https://koboweb-frontend.vercel.app", "http://localhost:5173"],
+    origin: ["https://votely-iota.vercel.app", "http://localhost:5173"],
     credentials: true,
     // allowedHeaders: "*",
   })
