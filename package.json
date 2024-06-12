@@ -1,4 +1,31 @@
 {
   "name": "server",
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.2.2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "build": "babel src -d dist",
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": ">=14.20.1"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.24.6",
+    "@babel/core": "^7.24.6",
+    "@babel/node": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
+    "argon2": "^0.40.3",
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "list_end_points": "^2.0.6",
+    "mongoose": "^8.4.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.2",
+    "socket.io": "^4.7.5"
+  }
 }
