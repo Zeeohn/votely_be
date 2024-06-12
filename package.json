@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
-    "build": "babel ./ -d dist",
+    "build": "babel -d dist",
     "start": "node app.js"
   },
   "engines": {
