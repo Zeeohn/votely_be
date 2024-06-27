@@ -30,20 +30,39 @@ const io = new Server(server, {
   },
 });
 
+const allowedOrigins = [
+  "https://votely-iota.vercel.app",
+  "http://localhost:5173",
+  "https://ebeencardiovascularedu.com.ng",
+];
+
 app.use(
   cors({
-    origin: [
-      "https://votely-iota.vercel.app",
-      "http://localhost:5173",
-      "https://ebeencardiovascularedu.com.ng",
-    ],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
-    // allowedHeaders: "*",
-    "Access-Control-Allow-Origin": "*",
   })
 );
 
-app.options("*", cors());
+// Handle preflight requests for all routes
+app.options(
+  "*",
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
