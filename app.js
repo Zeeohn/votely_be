@@ -24,7 +24,7 @@ const io = new Server(server, {
     origin: [
       "http://localhost:5173",
       "https://votely-iota.vercel.app",
-      "https://www.ebeencardiovascularedu.com.ng/",
+      "https://ebeencardiovascularedu.com.ng",
     ],
     methods: ["GET", "POST", "PATCH"],
   },
@@ -35,10 +35,11 @@ app.use(
     origin: [
       "https://votely-iota.vercel.app",
       "http://localhost:5173",
-      "https://www.ebeencardiovascularedu.com.ng/",
+      "https://ebeencardiovascularedu.com.ng",
     ],
     credentials: true,
     // allowedHeaders: "*",
+    "Access-Control-Allow-Origin": "*",
   })
 );
 
