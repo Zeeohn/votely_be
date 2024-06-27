@@ -34,6 +34,7 @@ const allowedOrigins = [
   "https://votely-iota.vercel.app",
   "http://localhost:5173",
   "https://ebeencardiovascularedu.com.ng",
+  "https://www.ebeencardiovascularedu.com.ng",
 ];
 
 app.use(
