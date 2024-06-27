@@ -21,14 +21,22 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://votely-iota.vercel.app"],
+    origin: [
+      "http://localhost:5173",
+      "https://votely-iota.vercel.app",
+      "https://www.ebeencardiovascularedu.com.ng/",
+    ],
     methods: ["GET", "POST", "PATCH"],
   },
 });
 
 app.use(
   cors({
-    origin: ["https://votely-iota.vercel.app", "http://localhost:5173"],
+    origin: [
+      "https://votely-iota.vercel.app",
+      "http://localhost:5173",
+      "https://www.ebeencardiovascularedu.com.ng/",
+    ],
     credentials: true,
     // allowedHeaders: "*",
   })
@@ -244,6 +252,31 @@ io.on("connection", (socket) => {
 });
 
 app.use("/auth", userRoute);
+
+app.post("/proxy", async (req, res) => {
+  console.log(req.body);
+
+  try {
+    const response = await axios.post(
+      "https://api.anthropic.com/v1/messages",
+      req.body,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": process.env.CLAUDE_AI_KEY,
+          "anthropic-version": "2023-06-01",
+        },
+      }
+    );
+
+    res.json(response.data);
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .json({ message: "Error making request", error: error.message });
+  }
+});
 
 const PORT = process.env.PORT || 8002;
 mongoose.set("strictQuery", false);
