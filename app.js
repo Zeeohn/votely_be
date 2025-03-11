@@ -24,6 +24,7 @@ const io = new Server(server, {
     origin: [
       "http://localhost:5173",
       "https://votely-iota.vercel.app",
+      "https://beencardio.vercel.app",
       "https://ebeencardiovascularedu.com.ng",
     ],
     methods: ["GET", "POST", "PATCH"],
