@@ -36,6 +36,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://ebeencardiovascularedu.com.ng",
   "https://www.ebeencardiovascularedu.com.ng",
+  "https://beencardio.vercel.app",
 ];
 
 app.use(
